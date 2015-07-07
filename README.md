@@ -174,16 +174,23 @@ So, you should finally have a) GPG public key b) GPG private key c) GPG password
 *For those who are familiar with the keystore method for signing android apps, this is a bit different, but it does a similar thing.*
 
 
-### NOTE II. What are the important scripts in this project?
+### NOTE II. What are the important files/scripts in this project?
 
+```
 - bintray.auth : For authenticating with bintray
+```
 
+```
 - bintray-aar-settings.gradle : for separating the release settings.gradle from the settings.gradle used in development
 - bintray-publish.bat : for executing a release
 - bintray-publish-debug.bat : for executing a dry-run
+```
 
+```
 - mod_library/build.gradle : finalized parameter container + android AAR build using the android library plugin. 
 - bintray-aar-publish.gradle : contains the upload and publishing script.
+```
 
+```
 - mod_sample/build.gradle : defines the repo + dependency for your AAR library. 
-
+```
