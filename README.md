@@ -20,6 +20,8 @@ compile 'com.jattcode:android-bintray-kit:0.5'
 
 Bintray allows you to keep track of your builds in your OWN maven repositories. At the same time you can push those builds to Jcenter or MavenCentral (two popular repositories). Using repositories is pretty useful for keeping code modularized and things manageable. 
 
+The instructions below will be kept short, to avoid over-verbosity. Let me know if I missed out, and I'll try to update it. Thanks!
+
 *Note: For more information about AARs, repositories and detailed tutorials, please visit this webpage <LINK>. This quick guide surmises the important steps to get things up and running.*
 
 ### Part 2: HOW TO USE THIS KIT
@@ -28,8 +30,26 @@ Requirements - Install Android Studio with SDK, and basic knowledge of building 
 
 ##### A. Setup a Bintray account
 
-- Go to https://bintray.com and create 
-- Setup your GPG keys (Theres a quick tutorial on this at the bottom of the page
+- Create a user account : Go to https://bintray.com 
+- Setup GPG public/private key + GPG password : Under 'GPG signing' in your Bintray profile, update your PUBLIC & PRIVATE keys (See below for a quick tutorial on how to generate the signature keys + signature password)
+- Get an API key : Obtain the 'API key' from your Bintray profile
+
+##### B. Enable auto-signing in your Bintray-Maven repo
+
+- Log-in and go to your dashboard (https://bintray.com/). 
+- You should see 6 repositories personally owned by you!! (And its free! So nice of Jfrog :D).
+- Click on the repo that says 'Maven'. This brings you to the repo dashboard.
+- Click on 'Edit' for the repo, scroll to the bottom and enable 'GPG Sign uploaded files automatically'
+
+##### C. Download the project files
+
+Download the android-bintray-kit codes.
+
+```
+git clone https://github.com/jimcoven/android-bintray-kit
+```
+
+##### C. Configure the project
 
 
 - Explain how to use (SetupBintray, DownloadProject, ConfigureParams.)
@@ -76,7 +96,7 @@ dependencies {
 }
 ```
 
-##### NOTE I. GPG Signing keys
+##### NOTE I. Quick steps for obtaining GPG Signing keys
 
 Step 1. You need cygwin or terminal access to do this. Open a terminal and type: 
 
@@ -84,7 +104,7 @@ Step 1. You need cygwin or terminal access to do this. Open a terminal and type:
 gpg --gen-key
 ```
 
-Step 2. Just press enter when you are asked to choose. The recommendations are good enough for general purpose use. You should see the following output after you have confirmed your name, email.
+Step 2. Just press enter when you are asked to choose. The recommendations are good enough for general purpose use. You should see the following output after you have confirmed your name, email. You will also be asked to set a password - this is your GPG password.
 
 ```
 pub   2048R/ABCD1234 2015-07-05
@@ -105,4 +125,8 @@ gpg -a --export jattcode@gmail.com > public-key.asc
 gpg -a --export-secret-key jattcode@gmail.com > private-key.asc
 ```
 
-For those who are familiar with the keystore method for signing android apps, this is a bit different, but it does a similar thing. 
+So, you should finally have a) GPG public key b) GPG private key c) GPG password. 
+
+* For those who are familiar with the keystore method for signing android apps, this is a bit different, but it does a similar thing. *
+
+
