@@ -1,12 +1,24 @@
-- Overview (Purpose, AAR, Bintray|JCenter|MavenCentral)
-- Requirements - Android Studio
+### Overview of the Android-Bintray-Kit -- ABK
+
+This vanilla kit is quickly help you get started on the following:
+
+1. Create an Android AAR library.
+2. Generate the build and upload the AAR format a Bintray repository.
+3. Create a sample demo app that utilizes AAR ilbrary above.
+
+Bintray allows you to keep track of your builds in your OWN maven repositories. At the same time you can push those builds to Jcenter or MavenCentral (two popular repositories). Using repositories is pretty useful for keeping code modularized and things manageable.
+
+*Note: For more information about AARs, repositories and detailed tutorials, please visit this webpage <LINK>. This quick guide surmises the important steps to get things up and running.*
+
+Requirements - Install Android Studio with SDK, and basic knowledge of building android apps.
+
+###
+
 - Explain how to use (SetupBintray, DownloadProject, ConfigureParams.)
 - Link to website for detailed tutorial
-- makes it easy to start projects or submit widgets for OSS. allow ppl to share ideas. Works off the shelf for scripts most of the time. easily setup to bintray. every open source project seems to specify differently- getting messy to integrate libraries. using a repo bintray is very efficient. 
+
 
 TODO: Add mavencentral. a bit more on jcenter. setup repo to support snapshots.
-
-A basic android template for building libraries using gradle and which is configured for publishing to jcenter.
 
 ### This template uploads in the new AAR format.
 
