@@ -171,6 +171,6 @@ gpg -a --export-secret-key jattcode@gmail.com > private-key.asc
 
 So, you should finally have a) GPG public key b) GPG private key c) GPG password. 
 
-* For those who are familiar with the keystore method for signing android apps, this is a bit different, but it does a similar thing. *
+*For those who are familiar with the keystore method for signing android apps, this is a bit different, but it does a similar thing.*
 
 
