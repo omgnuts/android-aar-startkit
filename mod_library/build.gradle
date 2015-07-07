@@ -26,13 +26,13 @@ ext {
 
     // bare minimum params for uploading to bintray
     bintray_repo = 'maven'
-    package_name = 'aabt-package'
+    package_name = 'android-bintray-kit'
     group_id = 'com.jattcode'
     artifact_id = project.name
-    artifact_version = '0.3.0'
+    artifact_version = '0.5.0'
     all_licenses = ["Apache-2.0"] // mandatory
-    git_url = 'https://github.com/jimcoven/android-aar-bintray-template.git'
-    site_url = 'https://github.com/jimcoven/android-aar-bintray-template'
+    git_url = 'https://github.com/jimcoven/android-bintray-kit.git'
+    site_url = 'https://github.com/jimcoven/android-bintray-kit'
 
     // pom.xml is required for users to download your aars using the command
     // ie. compile 'group_id:artifact_id:artifact_version'

@@ -20,7 +20,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.1.1'
 
     //compile project(':library')
-    compile 'com.jattcode:android-aar-bintray-template:0.2.5'
+    compile 'com.jattcode:android-bintray-kit:0.5.0'
 }
 
 /* .............................................................
