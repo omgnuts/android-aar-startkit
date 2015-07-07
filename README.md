@@ -156,10 +156,12 @@ uid                  Jim Coven <jattcode@gmail.com>
 sub   2048R/12345678 2015-03-07
 ```
 
-Step 3. Submit your key to a public like below. You can just submit it, you don't have to open an account or anything. Send the command, where "ABCD1234" are the eight alphanumeric chars from Step 2 above. (see the first line that starts with 'pub.. 2048R/ABCD1234 2015-07-05"
+Step 3. Submit your key to a public like below. You can just submit it, you don't have to open an account or anything. Send the command, where "ABCD1234" are the eight alphanumeric chars from Step 2 above. (see the first line that starts with 'pub.. 2048R/ABCD1234 2015-07-05". Either one is fine, you don't have to submit to all.
 
 ```
 gpg --keyserver hkp://pool.sks-keyservers.net --send-keys ABCD1234
+gpg --keyserver hkp://keyserver.ubuntu.com --send-keys ABCD1234
+gpg --keyserver hkp://pgp.mit.edu --send-keys ABCD1234
 ```
 
 Step 4. Export your keys
