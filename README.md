@@ -111,7 +111,7 @@ In this part of the universe, we can express the above as
     pom_developer_email = 'jattcode@gmail.com'
 ```
 
-3. Go to a command-ilne / terminal and run to test it out. If you are on windows, you can run 'bintray-publish.bat'. You should see the logs showing that you have uploaded the AAR to bintray. Go to bintray -> Maven repo, and look for your package. Alternatively, go to https://dl.bintray.com/username/maven and you should see things there in a minute or so. 
+3. Go to a command-ilne / terminal and run to test it out. If you are on windows, you can run 'bintray-publish.bat'. You should see the logs showing that you have uploaded the AAR to bintray. Go to bintray -> Maven repo, and look for your package. Alternatively, go to https://dl.bintray.com/your_username/maven and you should see things there in a minute or so. 
 
 ``` 
 gradlew bintrayUpload -c bintray-aar-settings.gradle -Ppublish_mode=release
@@ -122,7 +122,7 @@ gradlew bintrayUpload -c bintray-aar-settings.gradle -Ppublish_mode=release
 - Change the repo to your own username
 
 ```
-maven { url 'https://dl.bintray.com/username/maven/' }
+maven { url 'https://dl.bintray.com/your_username/maven/' }
 ```
 
 - Change the dependencies to
