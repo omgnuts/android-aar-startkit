@@ -49,54 +49,98 @@ Download the android-bintray-kit codes.
 git clone https://github.com/jimcoven/android-bintray-kit
 ```
 
-##### C. Configure the project
+##### D. Update the project with your keys
 
-
-- Explain how to use (SetupBintray, DownloadProject, ConfigureParams.)
-- Link to website for detailed tutorial
-
-
-TODO: Add mavencentral. a bit more on jcenter. setup repo to support snapshots.
-
-### This template uploads in the new AAR format.
-
-- /AndroidManifest.xml (mandatory)
-- /classes.jar (mandatory)
-- /res/ (mandatory)
-- /R.txt (mandatory)
-- /assets/ (optional)
-- /libs/*.jar (optional)
-- /jni/<abi>/*.so (optional)
-- /proguard.txt (optional)
-- /lint.jar (optional)
-
-
-### Setup bintray 
-Here's a good tutorial
-... find those bookmarks
-
-### Create "local.properties" file in the root project folder
-* bintray.userid=[eg. user123] 
-* bintray.apikey=[eg. 3ff1763398311f0d73ab7e42f3e46h3457132b42]
-* bintray.gpgkey=[eg. password123]
-
-### Bintray (either JCenter or MavenORG)
-* The libraries will be pushed to bintray. You can specify this in the compile (see sample app).
-* This repository does not support SNAPSHOT. To use that register for Sona in Bintray
- 
-```
- maven {
-        url 'https://dl.bintray.com/jattcode/maven/'
-    }
-```
+- Open the file 'bintray.auth_example' and update the information there
 
 ```
-dependencies {
-    compile 'com.jattcode.oss:android-library-template:0.1.0'
-}
+bintray.userid=USERNAME
+bintray.apikey=3ff1d537280570753817e42f3e45693816592b41
+bintray.gpgkey=PASSWORD
 ```
 
-##### NOTE I. Quick steps for obtaining GPG Signing keys
+- Rename the file to 'bintray.auth'
+- Hooray, now your project is ilnked to Bintray with valid authentication setup.
+
+##### E. Configure the project
+
+So lets say you want to create an AAR that people can reference as:
+
+```
+compile 'com.playground:my-awesome-widget:1.0'
+```
+
+In this part of the universe, we can express the above as 
+
+```
+    compile 'group_id : artifact_id : artifact_version '
+```
+
+1. Open 'bintray-aar-settings.gradle' and update the project artifact_id to 'my-awesome-widget' but it still logically points to mod_library in the project. You can change this anytime, but do bear it mind it will affect those who have already used your library in their projects. It should look like this
+
+```
+    include ':my-awesome-widget'
+    project(':my-awesome-widget').projectDir = new File('mod_library')
+```
+
+2. Open 'mod_library/build.gradle'. I have sectioned out the parameters as follows. 
+
+- Authentication (Why use bintray.auth instead of leaving them in here? The .gitignore ignores the upload of your auth parameters, in case you leave them inside here and check them in.)
+```
+    bintray_userid = properties.getProperty("bintray.userid")
+    bintray_apikey = properties.getProperty("bintray.apikey")
+    bintray_gpgkey = properties.getProperty("bintray.gpgkey")
+```
+
+- Library info (I have indicated the important ones with '-->'). The rest should be clear.
+```
+    bintray_repo = 'maven'
+--> package_name = 'some-package-name-that-you-want' 
+--> group_id = 'com.playground' 
+    artifact_id = project.name // we already set this above
+--> artifact_version = '1.0'
+    all_licenses = ["Apache-2.0"] // mandatory
+    git_url = 'https://github.com/jimcoven/android-bintray-kit.git'
+    site_url = 'https://github.com/jimcoven/android-bintray-kit'
+    
+    pom_library_desc = 'Basic android library template for deploying AARs'
+    pom_license_name = 'The Apache Software License, Version 2.0'
+    pom_license_url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+--> pom_developer_id = 'jimcoven' // does not have to be your bintray user_id
+    pom_developer_name = 'Jim Coven'
+    pom_developer_email = 'jattcode@gmail.com'
+```
+
+3. Go to a command-ilne / terminal and run to test it out. If you are on windows, you can run 'bintray-publish.bat'. You should see the logs showing that you have uploaded the AAR to bintray. Go to bintray -> Maven repo, and look for your package. Alternatively, go to https://dl.bintray.com/username/maven and you should see things there in a minute or so. 
+
+``` 
+gradlew bintrayUpload -c bintray-aar-settings.gradle -Ppublish_mode=release
+```
+
+4. Now lets test your sample app. Go to 'mod_sample/build.gradle'. 
+
+- Change the repo to your own username
+
+```
+maven { url 'https://dl.bintray.com/username/maven/' }
+```
+
+- Change the dependencies to
+
+```
+compile 'com.playground:my-awesome-widget:1.0'
+```
+
+- Note that the sample app does not reference mod_library locally. So it actually pulls your library off your bintray repository and uses that to build your application. From the project root directory, type the following to build the app
+
+```
+gradlew build
+```
+
+### That's all folks! Hope it helps. Let me know if there are mistakes to be corrected. 
+
+
+### NOTE I. Quick steps for obtaining GPG Signing keys
 
 Step 1. You need cygwin or terminal access to do this. Open a terminal and type: 
 
