@@ -22,7 +22,7 @@ Bintray allows you to keep track of your builds in your OWN maven repositories. 
 
 The instructions below will be kept short, to avoid over-verbosity. Let me know if I missed out, and I'll try to update it. Thanks!
 
-*Note: For more information about AARs, repositories and detailed tutorials, please visit this webpage <LINK>. This quick guide surmises the important steps to get things up and running.*
+*Note: For more information about AARs, repositories and detailed tutorials, please visit this webpage http://www.jattcode.com/howto-publish-android-aars-to-bintrayjcentermavencentral. This quick guide surmises the important steps to get things up and running.*
 
 ### Part 2: HOW TO USE THIS KIT
 
