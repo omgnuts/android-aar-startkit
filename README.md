@@ -77,7 +77,7 @@ In this part of the universe, we can express the above as
 ```
 --> package_name = 'some-package-name-that-you-want' 
 --> group_id = 'com.playground' 
-    artifact_id = project.name // we already set this above
+    artifact_id = 'my-awesome-widget'
 --> lib_version = '1.0'
     lib_version_code = 1
     git_url = 'https://github.com/jimcoven/android-aar-startkit.git'
