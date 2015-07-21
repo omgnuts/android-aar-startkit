@@ -1,3 +1,5 @@
+Last updated: 21 July 2015
+
 ### Part 1: Overview of the Android-AAR-StartKit
 
 This vanilla kit is quickly help you get started on the following:
