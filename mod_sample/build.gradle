@@ -3,12 +3,7 @@ apply plugin: 'com.android.application'
 ext {
     app_id = 'com.jattcode.oss.sample' // usually the namespace. Note it is not the same as package
     app_version_code = 1
-    app_version = '0.5x'
-}
-
-// specific repos that are not in jcenter() or mavencentral() - both defined at root already
-repositories {
-    //maven { url 'https://dl.bintray.com/jimcoven/maven/' }
+    app_version = '0.6'
 }
 
 dependencies {
