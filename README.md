@@ -31,8 +31,16 @@ Requirements - Install Android Studio with SDK, and basic knowledge of building 
 ##### A. Setup a Sonatype account
 
 - Register for your account on https://www.sonatype.org. Once approved, login
-- Create a ‘New Project’ JIRA issue on your dashboard. For Project, select ‘Community Support – Open Source Project Repository Hosting‘. Fill in the required fields.
+- Create a ‘New Project’ JIRA issue on your dashboard. 
+![alt text][create]
+- For Project, select ‘Community Support – Open Source Project Repository Hosting‘. Fill in the required fields.
+- ![alt text][submit]
 - After you submit the request, you have to wait for a few days for that to be approved.
+![alt text][notice]
+
+[create]: https://raw.githubusercontent.com/jimcoven/android-aar-startkit/master/art/55-sona-create.jpg "Create Jira Issue"
+[submit]: https://raw.githubusercontent.com/jimcoven/android-aar-startkit/master/art/56-sona-submit.jpg "Submit Jira Issue"
+[notice]: https://raw.githubusercontent.com/jimcoven/android-aar-startkit/master/art/57-sona-created.jpg "Receive notification"
 
 ##### B. Download the project files
 
