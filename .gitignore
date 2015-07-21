@@ -34,7 +34,3 @@ build/
 
 # Local configs 
 local.properties
-
-# Authentication policies
-*.auth
-

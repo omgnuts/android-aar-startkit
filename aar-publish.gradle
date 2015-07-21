@@ -1,7 +1,5 @@
-if (!project.hasProperty('publish_mode')) return;
-
 group = group_id
-version = artifact_version
+version = lib_version
 project.archivesBaseName = artifact_id
 
 /* .............................................................
@@ -84,31 +82,69 @@ install {
 }
 
 /* .............................................................
- * Publish to bintray
+ * Upload to Sonatype / Bintray
   ............................................................. */
 
-apply plugin: 'com.jfrog.bintray'
+def isReleaseBuild() {
+    return version.contains("SNAPSHOT") == false
+}
 
-bintray {
-    user = bintray_userid
-    key = bintray_apikey
+def getReleaseRepositoryUrl() {
+    return hasProperty('RELEASE_REPOSITORY_URL') ? RELEASE_REPOSITORY_URL
+            : "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+}
 
-    configurations = ['archives']
+def getSnapshotRepositoryUrl() {
+    return hasProperty('SNAPSHOT_REPOSITORY_URL') ? SNAPSHOT_REPOSITORY_URL
+            : "https://oss.sonatype.org/content/repositories/snapshots/"
+}
 
-    pkg {
-        repo = bintray_repo
-        name = package_name
-        websiteUrl = site_url
-        vcsUrl = git_url
-        licenses = all_licenses
-        dryRun = (project.publish_mode == 'debug')
-        publish = true
-        publicDownloadNumbers = true
-        version {
-            gpg {
-                sign = true //Determines whether to GPG sign the files. The default is false
-                passphrase = bintray_gpgkey
-                //Optional. The passphrase for GPG signing'
+signing {
+    required { isReleaseBuild() && gradle.taskGraph.hasTask("uploadArchives") }
+    sign configurations.archives
+}
+
+afterEvaluate { project ->
+    uploadArchives {
+        configuration = configurations.archives
+        repositories.mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            repository(url: getReleaseRepositoryUrl()) {
+                authentication(userName: sonatype_userid, password: sonatype_passwd)
+            }
+
+            snapshotRepository(url: getSnapshotRepositoryUrl()) {
+                authentication(userName: sonatype_userid, password: sonatype_passwd)
+            }
+
+            pom.project {
+                name package_name
+                packaging 'aar'
+                description pom_library_desc
+                url site_url
+
+                scm {
+                    url site_url
+                    connection git_url
+                    developerConnection git_url
+                }
+
+                licenses {
+                    license {
+                        name pom_license_name
+                        url pom_license_url
+                        distribution 'repo'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id pom_developer_id
+                        name pom_developer_name
+                        email pom_developer_email
+                    }
+                }
             }
         }
     }
