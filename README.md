@@ -141,3 +141,20 @@ gradlew build
 
 ### That's all folks! Hope it helps. Let me know if there are mistakes to be corrected. 
 
+
+Summary of commands 
+
+```
+// To deploy release  / snapshot
+// For snapshot: remember to change the version to include the SNAPSHOT eg. 0.6-SNAPSHOT
+// Also remember to disable the build of the app because you only want to deploy the library
+gradlew uploadArchives
+
+// To build locally for development
+gradlew build 
+
+// or 
+gradlew clean build
+```
+
+
