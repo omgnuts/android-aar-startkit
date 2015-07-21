@@ -19,8 +19,8 @@ ext {
     artifact_id = 'aar-jumpstart-kit'
     lib_version = '0.6-SNAPSHOT'
     lib_version_code = 1
-    git_url = 'https://github.com/jimcoven/android-bintray-kit.git'
-    site_url = 'https://github.com/jimcoven/android-bintray-kit'
+        git_url = 'https://github.com/jimcoven/android-aar-startkit.git'
+    site_url = 'https://github.com/jimcoven/android-aar-startkit'
     all_licenses = ["Apache-2.0"]
 
     // pom.xml is required for users to download your aars using the command
