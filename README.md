@@ -31,7 +31,7 @@ Requirements - Install Android Studio with SDK, and basic knowledge of building 
 ##### A. Setup a Sonatype account
 
 - Register for your account on https://www.sonatype.org. Once approved, login
-- 
+
 - Create a ‘New Project’ JIRA issue on your dashboard. 
 ![alt text][create]
 
