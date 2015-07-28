@@ -18,7 +18,7 @@
  *
  */
 
-package com.jattcode.oss;
+package com.github.jimcoven.aarkit;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

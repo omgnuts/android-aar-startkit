@@ -18,7 +18,7 @@
  *
  */
 
-package com.jattcode.oss.sample;
+package com.github.jimcoven.demo.aarkit;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

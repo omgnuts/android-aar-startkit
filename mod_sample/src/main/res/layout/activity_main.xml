@@ -2,7 +2,7 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
 
-    <com.jattcode.oss.SampleButton
+    <com.github.jimcoven.aarkit.SampleButton
         android:id="@+id/sample_button"
         android:text="@string/sample_button"
         android:layout_width="match_parent"

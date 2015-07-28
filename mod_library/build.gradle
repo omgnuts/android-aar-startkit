@@ -6,20 +6,13 @@ apply plugin: 'signing'
  Project parameters are written in underscore_case to maintain readability from script codes.
  */
 ext {
-    // Bintray credentials
-    Properties properties = new Properties()
-    properties.load(project.rootProject.file('local.properties').newDataInputStream())
-
-    sonatype_userid = properties.getProperty("sonatype.userid")
-    sonatype_passwd = properties.getProperty("sonatype.passwd")
-
     // bare minimum params for uploading archive
-    package_name = 'AAR Jumpstart Kit'
-    group_id = 'com.jattcode'
-    artifact_id = 'aar-jumpstart-kit'
-    lib_version = '0.6-SNAPSHOT'
+    package_name = 'AAR Starter Kit'
+    group_id = 'com.github.jimcoven'
+    artifact_id = 'aar-startkit'
+    lib_version = '0.61-SNAPSHOT'
     lib_version_code = 1
-        git_url = 'https://github.com/jimcoven/android-aar-startkit.git'
+    git_url = 'https://github.com/jimcoven/android-aar-startkit.git'
     site_url = 'https://github.com/jimcoven/android-aar-startkit'
     all_licenses = ["Apache-2.0"]
 

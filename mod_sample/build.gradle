@@ -1,9 +1,9 @@
 apply plugin: 'com.android.application'
 
 ext {
-    app_id = 'com.jattcode.oss.sample' // usually the namespace. Note it is not the same as package
+    app_id = 'com.github.jimcoven.demo.aarkit' // usually the namespace. Note it is not the same as package
     app_version_code = 1
-    app_version = '0.6'
+    app_version = '0.61'
 }
 
 dependencies {
@@ -11,7 +11,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.2.0'
 
     //compile project(':library')
-    compile 'com.jattcode:aar-jumpstart-kit:0.6-SNAPSHOT'
+    compile 'com.github.jimcoven:aar-startkit:0.61-SNAPSHOT'
 }
 
 /* .............................................................
@@ -22,13 +22,23 @@ android {
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
 
+    signingConfigs {
+        release {
+            keyAlias signapk_alias
+            keyPassword signapk_pass1
+            storeFile file(signapk_store)
+            storePassword signapk_pass2
+        }
+    }
+
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 15
         applicationId app_id as String
-        versionCode app_version_code
+        versionCode app_version_code as int
         versionName app_version as String
     }
+
 
     buildTypes {
         debug {
@@ -36,7 +46,9 @@ android {
         }
         release {
             applicationIdSuffix ".release"
-            minifyEnabled false
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
